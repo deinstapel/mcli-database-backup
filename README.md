@@ -1,4 +1,4 @@
-# mc-database-backup
+# mcli-database-backup
 
 This is the `minio/mc` image with some additional database clients, which we need for backups.
 
