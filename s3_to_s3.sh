@@ -22,7 +22,7 @@ do
     echo "Mirroring $SOURCE_BACKUP to $TARGET_BACKUP"
     { mc ls "$SOURCE_BACKUP" > /dev/null 2>&1 && echo '> Source bucket OK'; } || { echo '> Source bucket does not exist or no access' && failed_buckets+=($bucket) && continue; }
     { mc ls "$TARGET_BACKUP" > /dev/null 2>&1 && echo '> Target bucket exists'; } || { mc mb "$TARGET_BACKUP" && echo '> Target bucket created'; }
-    { mc mirror -q "$SOURCE_BACKUP" "$TARGET_BACKUP" && echo '> Backup done'; } || { echo '> Backup failed, see logs above' && failed_buckets+=($bucket) && continue; }
+    { mc mirror -q --overwrite --remove "$SOURCE_BACKUP" "$TARGET_BACKUP" && echo '> Backup done'; } || { echo '> Backup failed, see logs above' && failed_buckets+=($bucket) && continue; }
 done
 
 echo "Backup finished, ${#failed_buckets[@]} buckets failed."
