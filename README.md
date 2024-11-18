@@ -16,3 +16,9 @@ This is the `minio/mc` image with some additional database clients, which we nee
   - vice versa for `REMOTE`
   - `REMOTE_PREFIX` - Prefix for the remote backups bucket names.
 - This will e.g. copy from `local/bucket` to `remote/prefix-bucket-s3-backup`
+
+## Postgresql backup
+
+For running postgresql backup, the used postgresql client version must match the server version. This image currently contains postgresql clients 12-15 (default=12).
+
+To change the postgresql client version, set the environment variable `DEFAULT_PG_VERSION` accordingly when running this image.
